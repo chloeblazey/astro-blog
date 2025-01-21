@@ -1,6 +1,6 @@
 ---
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro'
+
 const pageTitle = "About Me";
 
 const identity = {
@@ -14,31 +14,19 @@ const identity = {
 const skills = ["HTML", "CSS", "JavaScript", "React", "Node.js", "Express", "Astro"];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<Nav />
+<BaseLayout pageTitle={pageTitle}>
+	<h2>Hi! My name is {identity.name}.</h2>
+	<h2>Here are a few facts about me.</h2>
+	<ul>
+		<li>I live in {identity.country}.</li>
+		<li>My birthday is on {identity.birthday}.</li>
+		<li>My hobbies include: {identity.hobbies.join(", ")}.</li>
+	</ul>
+	<p>My skills include:</p>
+	<ul>
+		{skills.map((skill) => (
+			<li>{skill}</li>
+		))}
+	</ul>
+</BaseLayout>
 
-		<h1>{ pageTitle }</h1>
-		<h2>Hi! My name is {identity.name}.</h2>
-		<h2>Here are a few facts about me.</h2>
-		<ul>
-			<li>I live in {identity.country}.</li>
-			<li>My birthday is on {identity.birthday}.</li>
-			<li>My hobbies include: {identity.hobbies.join(", ")}.</li>
-		</ul>
-		<p>My skills include:</p>
-		<ul>
-			{skills.map((skill) => (
-				<li>{skill}</li>
-			))}
-		</ul>
-    <Footer />
-	</body>
-</html>

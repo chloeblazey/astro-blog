@@ -1,0 +1,31 @@
+---
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+const { pageTitle } = Astro.props
+---
+
+<html lang="en" data-theme="valentine">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Chloser</title>
+	</head>
+	<body class="bg-base-100">
+		<div class="flex flex-col h-screen">
+			<Nav />
+
+			<!-- Page content -->
+			<div class="mx-auto max-w-xl grow h-min px-10 prose">
+				<h1>{pageTitle}</h1>
+				<slot />
+			</div>
+
+			<Footer></Footer>
+		</div>
+    <script>
+      import '../scripts/menu.js'
+    </script>
+	</body>
+</html>
